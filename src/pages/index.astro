@@ -9,7 +9,10 @@ const photo = await getImage();
 
 <Layout title="Pomodoro">
   <Background client:only photo={photo} />
-  <div class="absolute right-4 bottom-4 text-white z-50">
+  <div
+    class="absolute right-4 bottom-4 text-white z-50"
+    style="text-shadow: 1px 1px 6px rgba(0,0,0,0.6)"
+  >
     Photo by <a
       href={`https://unsplash.com/@${photo.user.username}`}
       target="_blank"
