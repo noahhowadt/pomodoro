@@ -1,6 +1,6 @@
 ---
-import Background from "../components/Background.astro";
-import Timer from "../components/Timer.jsx";
+import Background from "../components/Background";
+import Timer from "../components/Timer";
 import Layout from "../layouts/Layout.astro";
 import getImage from "../utils/getImage";
 
@@ -8,8 +8,20 @@ const photo = await getImage();
 ---
 
 <Layout title="Pomodoro">
-  <Background photo={photo} />
-  <div class="flex justify-center items-center h-screen">
-    <Timer client:load />
+  <Background client:only photo={photo} />
+  <div class="absolute right-4 bottom-4 text-white z-50">
+    Photo by <a
+      href={`https://unsplash.com/@${photo.user.username}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="underline">{photo.user.name}</a
+    > on <a
+      href="https://unsplash.com"
+      rel="noopener noreferrer"
+      target="_blank"
+      class="underline">Unsplash</a
+    >
   </div>
+  <Timer client:load />
 </Layout>
+../components/Background.tsx
