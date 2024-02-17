@@ -9,10 +9,18 @@ const serverApi = createApi({
   //...other fetch options
 });
 
+const searchTerms = [
+  "nature",
+  "mountains",
+  "water",
+  "forest",
+  "abstract art",
+  "architecture",
+];
 async function getImage() {
   const result = await serverApi.photos.getRandom({
     orientation: "landscape",
-    query: "nature",
+    query: searchTerms[Math.floor(Math.random() * searchTerms.length)],
   });
   if (result.errors) throw new Error(result.errors[0]);
 
